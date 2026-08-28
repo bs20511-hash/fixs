@@ -377,4 +377,92 @@
             });
         });
     </script>
+        <script>
+  // วาง URL ที่ได้จากขั้นตอน Deploy
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9-MLY1IRp0E0AGdmEGmDY8BeVrXTVlFLhdbiSe7q_k0VcOQ2hmUj6ls-nglVG7xeEVA/exec';
+
+  // 1. ระบบอัปโหลดรูปภาพ (คลิกกล่องแล้วเปิดเลือกไฟล์)
+  const uploadBox = document.getElementById('uploadBox');
+  const fileInput = document.getElementById('fileInput');
+
+  if (uploadBox && fileInput) {
+    uploadBox.style.cursor = 'pointer';
+    uploadBox.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        alert('เลือกรูปภาพเรียบร้อย: ' + e.target.files[0].name);
+      }
+    });
+  }
+
+  // 2. ระบบส่งใบแจ้งซ่อม (เรียก action: "createRepairRequest")
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const file = fileInput.files[0];
+      let base64Image = null;
+
+      // อ่านไฟล์รูปเป็น Base64 (ถ้ามีการเลือกรูป)
+      if (file) {
+        base64Image = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result.split(',')[1]);
+          reader.readAsDataURL(file);
+        });
+      }
+
+      const payload = {
+        action: "createRepairRequest",
+        assetCode: document.querySelector('input[placeholder*="ระบุรหัส"]')?.value || '',
+        location: document.querySelector('select')?.value || '',
+        urgency: "Medium",
+        details: document.querySelector('textarea')?.value || '',
+        image: base64Image,
+        fileName: file ? file.name : '',
+        fileType: file ? file.type : ''
+      };
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        alert('ส่งใบแจ้งซ่อมไปยัง Google Sheets เรียบร้อย!');
+        form.reset();
+      } catch (err) {
+        alert('เกิดข้อผิดพลาดในการส่งข้อมูล: ' + err);
+      }
+    });
+  }
+
+  // 3. ระบบยืนยันปิดงาน (เรียก action: "updateRepairStatus")
+  async function closeJob(btn, requestId) {
+    if (!confirm('คุณต้องการยืนยันการปิดงานซ่อมนี้ใช่หรือไม่?')) return;
+
+    const payload = {
+      action: "updateRepairStatus",
+      id: requestId,
+      status: "COMPLETED"
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      alert('ปิดงานซ่อมสำเร็จ!');
+      btn.innerText = 'ปิดงานเรียบร้อยแล้ว';
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+    } catch (err) {
+      alert('เกิดข้อผิดพลาดในการอัปเดตสถานะ: ' + err);
+    }
+  }
+</script>
 </body></html>
