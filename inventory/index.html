@@ -58,20 +58,25 @@
             </div>
         </div>
 
-        <nav class="flex-1 space-y-1">
-            <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../admin/index.html">
-                <span class="material-symbols-outlined">dashboard</span>
-                <span>หน้าหลัก</span>
-            </a>
-            <a class="flex items-center px-4 py-3 space-x-3 sidebar-active transition-all rounded-lg text-sm" href="#">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
-                <span>คลังพัสดุและครุภัณฑ์</span>
-            </a>
-            <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="#">
-                <span class="material-symbols-outlined">build_circle</span>
-                <span>เบิกถอนอะไหล่</span>
-            </a>
-        </nav>
+       <nav class="flex-1 space-y-1">
+    <!-- หน้าหลัก -->
+    <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../admin/index.html">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span>หน้าหลัก</span>
+    </a>
+
+    <!-- หน้าคลังพัสดุ (หน้าปัจจุบัน) -->
+    <a class="flex items-center px-4 py-3 space-x-3 sidebar-active transition-all rounded-lg text-sm" href="index.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+        <span>คลังพัสดุและครุภัณฑ์</span>
+    </a>
+
+    <!-- หน้าแจ้งซ่อม / เบิกถอน -->
+    <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../reporter_portal/index.html">
+        <span class="material-symbols-outlined">build_circle</span>
+        <span>เบิกถอนอะไหล่</span>
+    </a>
+</nav>
     </div>
 </aside>
 
