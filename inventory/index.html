@@ -58,23 +58,29 @@
             </div>
         </div>
 
-       <nav class="flex-1 space-y-1">
-    <!-- หน้าหลัก -->
+      <nav class="flex-1 space-y-1">
+    <!-- 1. หน้าหลัก (ไปที่โฟลเดอร์ admin) -->
     <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../admin/index.html">
         <span class="material-symbols-outlined">dashboard</span>
         <span>หน้าหลัก</span>
     </a>
 
-    <!-- หน้าคลังพัสดุ (หน้าปัจจุบัน) -->
-    <a class="flex items-center px-4 py-3 space-x-3 sidebar-active transition-all rounded-lg text-sm" href="index.html">
-        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
-        <span>คลังพัสดุและครุภัณฑ์</span>
+    <!-- 2. แจ้งซ่อม (ไปที่โฟลเดอร์ reporter_portal) -->
+    <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../reporter_portal/index.html">
+        <span class="material-symbols-outlined">report_problem</span>
+        <span>แจ้งซ่อม</span>
     </a>
 
-    <!-- หน้าแจ้งซ่อม / เบิกถอน -->
-    <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../reporter_portal/index.html">
-        <span class="material-symbols-outlined">build_circle</span>
-        <span>เบิกถอนอะไหล่</span>
+    <!-- 3. บอร์ดงาน (ไปที่โฟลเดอร์ technician) -->
+    <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../technician/index.html">
+        <span class="material-symbols-outlined">assignment</span>
+        <span>บอร์ดงาน</span>
+    </a>
+
+    <!-- 4. คลังพัสดุ (หน้าปัจจุบันของ inventory) -->
+    <a class="flex items-center px-4 py-3 space-x-3 bg-indigo-600 text-white font-bold transition-all rounded-lg text-sm" href="index.html">
+        <span class="material-symbols-outlined">inventory_2</span>
+        <span>คลังพัสดุ</span>
     </a>
 </nav>
     </div>
