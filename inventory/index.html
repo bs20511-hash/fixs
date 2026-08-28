@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>คลังพัสดุและครุภัณฑ์ - วิทยาลัยการอาชีพแม่สะเรียง</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <script id="tailwind-config">
@@ -14,10 +14,8 @@
           extend: {
             colors: {
                 "surface-dim": "#13121b",
-                "surface": "#13121b",
                 "surface-container": "#1f1f28",
                 "surface-container-high": "#2a2933",
-                "surface-container-highest": "#35343e",
                 "surface-variant": "#35343e",
                 "on-surface": "#e4e1ee",
                 "on-surface-variant": "#c7c4d8",
@@ -37,163 +35,162 @@
     </script>
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .sidebar-active { background-color: #4f46e5; color: #dad7ff; border-radius: 0.5rem; font-weight: 700; }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: #13121b; }
+        ::-webkit-scrollbar-thumb { background: #35343e; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-surface-dim text-on-surface font-sans overflow-hidden flex min-h-screen">
 
-<!-- Sidebar Navigation -->
-<aside class="w-[260px] min-w-[260px] h-screen flex flex-col bg-surface-container border-r border-outline-variant/30 z-50 flex-shrink-0">
-    <div class="flex flex-col p-4 space-y-6 h-full">
-        <div class="flex items-center space-x-3 px-2">
-            <div class="w-10 h-10 min-w-[40px] rounded-xl bg-primary flex items-center justify-center">
-                <span class="material-symbols-outlined text-on-primary">school</span>
+    <!-- Sidebar Left Navigation -->
+    <aside class="w-[260px] min-w-[260px] h-screen flex flex-col bg-surface-container border-r border-outline-variant/30 flex-shrink-0 z-50">
+        <div class="flex flex-col p-4 space-y-6 h-full">
+            <!-- Brand Logo -->
+            <div class="flex items-center space-x-3 px-2">
+                <div class="w-10 h-10 min-w-[40px] rounded-xl bg-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-primary">school</span>
+                </div>
+                <div class="overflow-hidden">
+                    <h1 class="text-sm font-bold text-primary leading-tight whitespace-nowrap">วิทยาลัยการอาชีพแม่สะเรียง</h1>
+                    <p class="text-[10px] text-on-surface-variant uppercase tracking-wider whitespace-nowrap">Maintenance Control</p>
+                </div>
             </div>
-            <div class="overflow-hidden">
-                <h1 class="text-sm font-bold text-primary leading-tight whitespace-nowrap">วิทยาลัยการอาชีพแม่สะเรียง</h1>
-                <p class="text-[10px] text-on-surface-variant uppercase tracking-wider whitespace-nowrap">Inventory System</p>
+
+            <!-- Menu items -->
+            <nav class="flex-1 space-y-1">
+                <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../admin/index.html">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>หน้าหลัก</span>
+                </a>
+                <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../reporter_portal/index.html">
+                    <span class="material-symbols-outlined">report_problem</span>
+                    <span>แจ้งซ่อม</span>
+                </a>
+                <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="#">
+                    <span class="material-symbols-outlined">assignment</span>
+                    <span>บอร์ดงาน</span>
+                </a>
+                <a class="flex items-center px-4 py-3 space-x-3 bg-indigo-600 text-white font-bold rounded-lg text-sm" href="#">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+                    <span>คลังพัสดุ</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto border-t border-outline-variant/30 pt-4">
+                <a class="flex items-center px-4 py-3 space-x-3 text-critical hover:bg-critical/10 rounded-lg transition-all text-sm" href="#">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>ออกจากระบบ</span>
+                </a>
             </div>
         </div>
+    </aside>
 
-      <nav class="flex-1 space-y-1">
-    <!-- 1. หน้าหลัก (ไปที่โฟลเดอร์ admin) -->
-    <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../admin/index.html">
-        <span class="material-symbols-outlined">dashboard</span>
-        <span>หน้าหลัก</span>
-    </a>
+    <!-- Main Content Right Area -->
+    <main class="flex-1 h-screen flex flex-col min-w-0 bg-surface-dim overflow-hidden relative">
+        
+        <!-- Top Navigation Header -->
+        <header class="bg-surface-container/80 border-b border-outline-variant/30 px-6 py-4 flex justify-between items-center shrink-0">
+            <div>
+                <h2 class="text-base lg:text-lg font-bold text-on-surface whitespace-nowrap">ระบบจัดการคลังพัสดุและครุภัณฑ์</h2>
+                <p class="text-xs text-on-surface-variant">ภาพรวมรายการครุภัณฑ์และคลังพัสดุสำรอง</p>
+            </div>
 
-    <!-- 2. แจ้งซ่อม (ไปที่โฟลเดอร์ reporter_portal) -->
-    <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../reporter_portal/index.html">
-        <span class="material-symbols-outlined">report_problem</span>
-        <span>แจ้งซ่อม</span>
-    </a>
+            <div class="flex items-center space-x-3">
+                <div class="relative hidden md:block w-64">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+                    <input class="w-full bg-surface-dim border border-outline-variant/30 rounded-full pl-9 pr-4 py-1.5 text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" placeholder="ค้นหารหัสครุภัณฑ์ หรือชื่อรายการ..." type="text">
+                </div>
 
-    <!-- 3. บอร์ดงาน (ไปที่โฟลเดอร์ technician) -->
-    <a class="flex items-center px-4 py-3 space-x-3 text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-lg text-sm" href="../technician/index.html">
-        <span class="material-symbols-outlined">assignment</span>
-        <span>บอร์ดงาน</span>
-    </a>
+                <button class="flex items-center space-x-1.5 bg-success text-white font-bold px-3.5 py-2 rounded-lg text-xs whitespace-nowrap hover:bg-success/90 transition-all" onclick="toggleModal('importModal')">
+                    <span class="material-symbols-outlined text-sm">add_circle</span>
+                    <span>นำเข้าข้อมูล (.CSV / .XLSX)</span>
+                </button>
 
-    <!-- 4. คลังพัสดุ (หน้าปัจจุบันของ inventory) -->
-    <a class="flex items-center px-4 py-3 space-x-3 bg-indigo-600 text-white font-bold transition-all rounded-lg text-sm" href="index.html">
-        <span class="material-symbols-outlined">inventory_2</span>
-        <span>คลังพัสดุ</span>
-    </a>
-</nav>
+                <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2bB1m6eaoU7dvEJGvz7Rns__Thi0bwhG6DRQbEQu5DH04zho-Wj6cC5MAI8F4fYdvFDR-9HL8hHnRmBWdEqmi2lQczxinouMhuJa8mlf0q7AsuJBfyuX6vJY7-MfaHD9zE9BYxS5xLtWYbXt226tukuz9ycg75IxhDDdtvNZ7PBIXKs5Dwwvm__k-b9NuXKy7JGdjM0UDufXgAuwfwDL_qPFkWRBuDP2IXoDcwveVc9v5N6Mjlqc-gQ" alt="Profile">
+                </div>
+            </div>
+        </header>
+
+        <!-- Body Canvas -->
+        <div class="p-6 space-y-6 overflow-y-auto flex-1">
+            
+            <!-- Filter Tabs -->
+            <div class="flex items-center space-x-2 bg-surface-container p-1 rounded-xl w-fit overflow-x-auto max-w-full">
+                <button class="px-4 py-2 rounded-lg text-xs font-bold bg-primary text-on-primary">ทั้งหมด (18)</button>
+                <button class="px-4 py-2 rounded-lg text-xs font-bold text-warning hover:bg-surface-variant/30">รอรับเรื่อง (5)</button>
+                <button class="px-4 py-2 rounded-lg text-xs font-bold text-on-surface-variant hover:bg-surface-variant/30">กำลังใช้งาน (10)</button>
+                <button class="px-4 py-2 rounded-lg text-xs font-bold text-critical hover:bg-surface-variant/30">ส่งซ่อม (3)</button>
+            </div>
+
+            <!-- Table Container -->
+            <div class="bg-surface-container rounded-2xl border border-outline-variant/30 overflow-x-auto shadow-sm">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead class="bg-surface-container-high border-b border-outline-variant/30">
+                        <tr>
+                            <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">รหัสครุภัณฑ์</th>
+                            <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">ชื่อรายการ / อุปกรณ์</th>
+                            <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">สถานที่จัดเก็บ</th>
+                            <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">สถานะ</th>
+                            <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">ผู้ดูแล/รับผิดชอบ</th>
+                            <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/20 text-xs">
+                        <tr class="hover:bg-surface-variant/20 transition-colors">
+                            <td class="px-6 py-4 font-bold text-primary whitespace-nowrap">CPU-MS-104</td>
+                            <td class="px-6 py-4 font-medium whitespace-nowrap">คอมพิวเตอร์ตั้งโต๊ะประมวลผล Intel i5</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant">ห้องปฏิบัติการคอม 1</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="bg-critical/10 text-critical text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">อยู่ระหว่างส่งซ่อม</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">ดร.ศิรินทร์ ชัยนาม</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <button class="text-primary hover:underline font-bold">รายละเอียด</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-surface-variant/20 transition-colors">
+                            <td class="px-6 py-4 font-bold text-primary whitespace-nowrap">AIR-MS-012</td>
+                            <td class="px-6 py-4 font-medium whitespace-nowrap">เครื่องปรับอากาศ 24,000 BTU</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant">ห้องพักครูสามัญ</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="bg-success/10 text-success text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">พร้อมใช้งาน</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">อ.อนันต์ ยอดมงคล</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <button class="text-primary hover:underline font-bold">รายละเอียด</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Import -->
+    <div class="fixed inset-0 z-[60] hidden" id="importModal">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="toggleModal('importModal')"></div>
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-surface-container-high rounded-2xl shadow-2xl border border-outline-variant/40 p-6 space-y-4">
+            <div class="flex justify-between items-center border-b border-outline-variant/30 pb-3">
+                <h3 class="text-base font-bold text-on-surface">นำเข้าข้อมูลครุภัณฑ์ (.CSV / .XLSX)</h3>
+                <button class="text-on-surface-variant hover:text-on-surface" onclick="toggleModal('importModal')">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="border-2 border-dashed border-outline-variant/50 rounded-xl p-6 text-center space-y-2 hover:border-success/50 transition-colors">
+                <span class="material-symbols-outlined text-success text-3xl">cloud_upload</span>
+                <p class="text-xs font-bold">ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์</p>
+                <p class="text-[10px] text-on-surface-variant">รองรับไฟล์ .CSV และ .XLSX</p>
+            </div>
+            <button class="w-full py-2.5 bg-success text-white font-bold rounded-xl text-xs shadow-lg hover:brightness-110 transition-all">ยืนยันการนำเข้าข้อมูล</button>
+        </div>
     </div>
-</aside>
 
-<!-- Main Content Area -->
-<main class="flex-1 h-screen flex flex-col min-w-0 bg-surface-dim overflow-hidden relative">
-    
-    <!-- Top Bar Header -->
-    <header class="bg-surface/80 border-b border-outline-variant/30 px-6 py-4 flex justify-between items-center shrink-0 z-40">
-        <div>
-            <h2 class="text-base lg:text-lg font-bold text-on-surface whitespace-nowrap">ระบบจัดการคลังพัสดุและครุภัณฑ์</h2>
-            <p class="text-xs text-on-surface-variant">ตรวจสอบ และเพิ่มรายการพัสดุ/ครุภัณฑ์ในระบบ</p>
-        </div>
-
-        <div class="flex items-center space-x-3">
-            <button class="flex items-center space-x-1.5 bg-success text-on-primary font-bold px-3.5 py-2 rounded-lg text-xs whitespace-nowrap hover:bg-success/90 transition-all" onclick="toggleModal('importModal')">
-                <span class="material-symbols-outlined text-sm">upload_file</span>
-                <span>นำเข้าข้อมูล (.CSV / .XLSX)</span>
-            </button>
-            <button class="flex items-center space-x-1.5 bg-primary text-on-primary font-bold px-3.5 py-2 rounded-lg text-xs whitespace-nowrap hover:brightness-110 transition-all">
-                <span class="material-symbols-outlined text-sm">add</span>
-                <span>เพิ่มรายการใหม่</span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Content Table -->
-    <div class="p-6 overflow-y-auto flex-1 space-y-4">
-        <!-- Search & Filter Bar -->
-        <div class="flex flex-wrap items-center justify-between gap-4">
-            <div class="relative flex-1 min-w-[280px]">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
-                <input class="w-full bg-surface-container border border-outline-variant/30 rounded-xl pl-9 pr-4 py-2 text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" placeholder="ค้นหารหัสครุภัณฑ์, ชื่ออุปกรณ์ หรือหมวดหมู่..." type="text">
-            </div>
-            <div class="flex items-center space-x-2">
-                <select class="bg-surface-container border border-outline-variant/30 rounded-xl px-3 py-2 text-xs text-on-surface focus:outline-none">
-                    <option value="">ทุกหมวดหมู่</option>
-                    <option value="IT">อุปกรณ์ไอที/คอมพิวเตอร์</option>
-                    <option value="ELE">เครื่องใช้ไฟฟ้า</option>
-                    <option value="TOOL">เครื่องมือช่าง</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Table -->
-        <div class="bg-surface-container rounded-2xl border border-outline-variant/30 overflow-x-auto shadow-sm">
-            <table class="w-full text-left border-collapse min-w-[800px]">
-                <thead class="bg-surface-container-high border-b border-outline-variant/20">
-                    <tr>
-                        <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">รหัสครุภัณฑ์</th>
-                        <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">รายการ/ชื่ออุปกรณ์</th>
-                        <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">หมวดหมู่</th>
-                        <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">สถานที่จัดเก็บ</th>
-                        <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">สถานะ</th>
-                        <th class="px-6 py-3 text-xs uppercase text-on-surface-variant font-bold">จัดการ</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-outline-variant/20 text-xs">
-                    <tr class="hover:bg-surface-variant/20 transition-colors">
-                        <td class="px-6 py-4 font-bold text-primary whitespace-nowrap">CPU-MS-104</td>
-                        <td class="px-6 py-4 font-medium whitespace-nowrap">คอมพิวเตอร์ประมวลผล Intel i5</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant">อุปกรณ์ไอที</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant">ห้องปฏิบัติการคอม 1</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="bg-warning/10 text-warning text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">ส่งซ่อม</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <button class="text-primary hover:underline font-bold">แก้ไข</button>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-surface-variant/20 transition-colors">
-                        <td class="px-6 py-4 font-bold text-primary whitespace-nowrap">AIR-MS-012</td>
-                        <td class="px-6 py-4 font-medium whitespace-nowrap">เครื่องปรับอากาศ 24,000 BTU</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant">เครื่องใช้ไฟฟ้า</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant">ห้องพักครูสามัญ</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="bg-success/10 text-success text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">พร้อมใช้งาน</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <button class="text-primary hover:underline font-bold">แก้ไข</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</main>
-
-<!-- Modal: Import CSV/XLSX -->
-<div class="fixed inset-0 z-[60] hidden" id="importModal">
-    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="toggleModal('importModal')"></div>
-    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-surface-container-high rounded-2xl shadow-2xl border border-outline-variant/40 p-6 space-y-4">
-        <div class="flex justify-between items-center border-b border-outline-variant/30 pb-3">
-            <h3 class="text-base font-bold text-on-surface">นำเข้าข้อมูลครุภัณฑ์</h3>
-            <button class="text-on-surface-variant hover:text-on-surface" onclick="toggleModal('importModal')">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-        <div class="border-2 border-dashed border-outline-variant/50 rounded-xl p-6 text-center space-y-2 hover:border-success/50 transition-colors">
-            <span class="material-symbols-outlined text-success text-3xl">cloud_upload</span>
-            <p class="text-xs font-bold">ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์</p>
-            <p class="text-[10px] text-on-surface-variant">รองรับไฟล์ .CSV และ .XLSX</p>
-        </div>
-        <button class="w-full py-2.5 bg-success text-on-primary font-bold rounded-xl text-xs shadow-lg hover:brightness-110 transition-all">ยืนยันการนำเข้าข้อมูล</button>
-    </div>
-</div>
-
-<script>
-    function toggleModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.classList.toggle('hidden');
-    }
-</script>
+    <script>
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
