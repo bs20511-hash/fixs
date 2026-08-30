@@ -204,8 +204,6 @@
                 adminView.classList.remove('hidden');
                 staffView.classList.add('hidden');
             }
-        }
-
         function togglePassword() {
             const passInput = document.getElementById('password');
             const icon = document.getElementById('eyeIcon');
@@ -216,52 +214,29 @@
                 passInput.type = 'password';
                 icon.innerText = 'visibility';
             }
-const API_URL = "https://script.google.com/macros/s/AKfycbzUUilqQLG44Dg8qqgkYqrnLqqvQD2EnrLF5_xHdASe3j75iWdNdNUcTE0jgV49apS11Q/exec";
+        }
 
-async function checkLogin() {
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value.trim();
+        async function checkLogin() {
+          const email = document.getElementById('email').value.trim();
+          const password = document.getElementById('password').value.trim();
 
-  if (!email || !password) {
-    alert("กรุณากรอกอีเมลและรหัสผ่านให้ครบถ้วน");
-    return;
-  }
+          // กำหนดอีเมลและรหัสผ่านที่ถูกต้องเพียงอันเดียว
+          const targetEmail = "bs20511@boripat.ac.th";
+          const targetPassword = "123456";
 
-  try {
-    const response = await fetch(API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain;charset=utf-8'
-      },
-      body: JSON.stringify({
-        action: 'login',
-        username: email,
-        password: password
-      })
-    })
+          if (!email || !password) {
+            alert("กรุณากรอกอีเมลและรหัสผ่านให้ครบถ้วน");
+            return;
+          }
 
-    const result = await response.json();
-    if (result.success) {
-      alert("เข้าสู่ระบบสำเร็จ!");
-      window.location.href = "../technician/index.html";
-    } else {
-      alert(result.message || "อีเมลหรือรหัสผ่านไม่ถูกต้อง");
-    }
-  } catch (error) {
-    console.error("Login Error:", error);
-    alert("เกิดข้อผิดพลาดในการเชื่อมต่อกับระบบ");
-  }
-}
-        // Lightweight interaction: Follow cursor glow
-        document.addEventListener('mousemove', (e) => {
-            const glows = document.querySelectorAll('.bg-glow');
-            const x = (e.clientX / window.innerWidth) * 20;
-            const y = (e.clientY / window.innerHeight) * 20;
-            glows.forEach((glow, idx) => {
-                const factor = idx === 0 ? 1 : -1;
-                glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-            });
-        });
+          // เช็กว่าตรงกับอีเมลและรหัสผ่านที่กำหนดไว้หรือไม่
+          if (email === targetEmail && password === targetPassword) {
+            alert("เข้าสู่ระบบสำเร็จ!");
+            window.location.href = "../technician/index.html";
+          } else {
+            alert("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+          }
+        }
     </script>
 
 
