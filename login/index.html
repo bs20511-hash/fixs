@@ -149,7 +149,7 @@
       <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-outline">
         <span class="material-symbols-outlined">mail</span>
       </div>
-      <input class="w-full bg-surface-lowest border border-outline-variant rounded-xl py-3 pl-12 pr-4 text-on-surface font-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="example@maesariang.ac.th" type="email">
+      <input id="email" type="email" class="w-full bg-surface-lowest border border-outline-variant rounded-xl py-3 pl-12 pr-4 text-on-surface font-body-md focus:outline-none focus:ring-2" required>
     </div>
   </div>
   <div class="space-y-2">
@@ -158,13 +158,12 @@
       <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-outline">
         <span class="material-symbols-outlined">lock</span>
       </div>
-      <input class="w-full bg-surface-lowest border border-outline-variant rounded-xl py-3 pl-12 pr-12 text-on-surface font-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="••••••••" type="password">
-    </div>
+      <input id="password" type="password" class="w-full bg-surface-lowest border border-outline-variant rounded-xl py-3 pl-12 pr-4 text-on-surface font-body-md focus:outline-none focus:ring-2" required>
   </div>
   <div class="flex justify-end">
     <a class="font-label-sm text-label-sm text-primary hover:underline" href="#">ลืมรหัสผ่าน?</a>
   </div>
-  <button class="w-full bg-primary py-4 rounded-xl text-on-primary font-bold text-label-md hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
+  <button type="button" onclick="checkLogin()" class="w-full bg-primary py-4 rounded-xl text-on-primary font-bold text-label-md hover:brightness-110 active:scale-[0.98] transition-all sh">
     เข้าสู่ระบบ
   </button>
 </div>
@@ -209,7 +208,7 @@
 
         function togglePassword() {
             const passInput = document.getElementById('password');
-            const icon = document.getElementById('pass-icon');
+            const icon = document.getElementById('eyeIcon');
             if (passInput.type === 'password') {
                 passInput.type = 'text';
                 icon.innerText = 'visibility_off';
@@ -217,8 +216,21 @@
                 passInput.type = 'password';
                 icon.innerText = 'visibility';
             }
-        }
+function checkLogin() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
 
+            const targetEmail = "Ihts2093@gmail.com";
+            const targetPassword = "123456767";
+
+            if (email === targetEmail && password === targetPassword) {
+                alert("เข้าสู่ระบบสำเร็จ!");
+                // ใส่พาธหน้าที่ต้องการให้เด้งไปเมื่อล็อกอินผ่าน
+                window.location.href = "../technician/index.html";
+            } else {
+                alert("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+            }
+        }
         // Lightweight interaction: Follow cursor glow
         document.addEventListener('mousemove', (e) => {
             const glows = document.querySelectorAll('.bg-glow');
