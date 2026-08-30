@@ -132,16 +132,14 @@
 <!-- Header Section -->
 <div class="text-center mb-8">
 <div class="inline-flex items-center justify-center p-3 rounded-2xl bg-surface-container mb-4 shadow-xl border border-outline-variant/30">
-<img class="w-16 h-16 object-contain" data-alt="A professional, high-resolution emblem of a Thai technical college. The logo features intricate traditional Thai patterns blended with modern industrial gear elements, symbolizing the harmony of heritage and technology. The color palette uses deep navy and silver, set against a dark slate background, maintaining the modern dashboard console aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALM_Wd9Km5Ilruoca-LOO2-NoFtQYGAAHBQnjkhajNeAA0vM4WzFYcTUAGF6G_23WJ_CyyRy_jTEMKJxHrCunCmZBLRNW3-cDrLi2ykdGZl5MiIobQR7Yc9oCggcQfdAkH9HEkv0HxsffTcXp9xZzZsyY1GuUyPXLeEsxlVRDj2LGSDbbX7UVmAdHytYPv4SdP71zO5C5puInppC7V910sKDNEvQEK4796ZdHe6Q7YNyMl9Hs7I8Q65A">
+<img class="w-16 h-16 object-contain" data-alt="A professional, high-resolution emblem of a Thai technical college." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALM_Wd9Km5Ilruoca-LOO2-NoFtQYGAAHBQnjkhajNeAA0vM4WzFYcTUAGF6G_23WJ_CyyRy_jTEMKJxHrCunCmZBLRNW3-cDrLi2ykdGZl5MiIobQR7Yc9oCggcQfdAkH9HEkv0HxsffTcXp9xZzZsyY1GuUyPXLeEsxlVRDj2LGSDbbX7UVmAdHytYPv4SdP71zO5C5puInppC7V910sKDNEvQEK4796ZdHe6Q7YNyMl9Hs7I8Q65A">
 </div>
 <h1 class="font-headline-lg text-headline-lg text-on-surface mb-1 tracking-tight">วิทยาลัยการอาชีพแม่สะเรียง</h1>
 <p class="font-body-md text-body-md text-on-surface-variant">ระบบแจ้งซ่อมบำรุงอุปกรณ์และครุภัณฑ์ไร้กระดาษ</p>
 </div>
 <!-- Authentication Card -->
 <div class="glass-card rounded-3xl p-card-padding shadow-2xl">
-<!-- Tabbed Switcher -->
 
-<!-- Tab 1: Staff (Google Login) -->
 <div class="space-y-5 animate-in fade-in duration-300">
   <div class="space-y-2">
     <label class="font-label-sm text-label-sm text-on-surface-variant ml-1">อีเมล</label>
@@ -149,7 +147,7 @@
       <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-outline">
         <span class="material-symbols-outlined">mail</span>
       </div>
-      <input id="emailInput" class="w-full bg-surface-lowest border border-outline-variant rounded-xl py-3 pl-12 pr-4 text-on-surface font-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="example@maesariang.ac.th" type="email">
+      <input id="emailInput" class="w-full bg-surface-lowest border border-outline-variant rounded-xl py-3 pl-12 pr-4 text-on-surface font-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="bs20511@boripat.ac.th" type="email">
     </div>
   </div>
   <div class="space-y-2">
@@ -164,11 +162,10 @@
   <div class="flex justify-end">
     <a class="font-label-sm text-label-sm text-primary hover:underline" href="#">ลืมรหัสผ่าน?</a>
   </div>
-  <button class="w-full bg-primary py-4 rounded-xl text-on-primary font-bold text-label-md hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/20" onclick="doLogin()">
+  <button type="button" class="w-full bg-primary py-4 rounded-xl text-on-primary font-bold text-label-md hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/20" onclick="doLogin()">
     เข้าสู่ระบบ
   </button>
 </div>
-<!-- Tab 2: Admin (Credentials) -->
 
 </div>
 <!-- Footer -->
@@ -182,43 +179,6 @@
 </footer>
 </main>
 <script>
-        function switchTab(type) {
-            const staffTab = document.getElementById('tab-staff');
-            const adminTab = document.getElementById('tab-admin');
-            const staffView = document.getElementById('view-staff');
-            const adminView = document.getElementById('view-admin');
-
-            if (type === 'staff') {
-                staffTab.classList.add('tab-active', 'text-primary');
-                staffTab.classList.remove('text-on-surface-variant');
-                adminTab.classList.remove('tab-active', 'text-primary');
-                adminTab.classList.add('text-on-surface-variant');
-                
-                staffView.classList.remove('hidden');
-                adminView.classList.add('hidden');
-            } else {
-                adminTab.classList.add('tab-active', 'text-primary');
-                adminTab.classList.remove('text-on-surface-variant');
-                staffTab.classList.remove('tab-active', 'text-primary');
-                staffTab.classList.add('text-on-surface-variant');
-                
-                adminView.classList.remove('hidden');
-                staffView.classList.add('hidden');
-            }
-        }
-
-        function togglePassword() {
-            const passInput = document.getElementById('password');
-            const icon = document.getElementById('pass-icon');
-            if (passInput.type === 'password') {
-                passInput.type = 'text';
-                icon.innerText = 'visibility_off';
-            } else {
-                passInput.type = 'password';
-                icon.innerText = 'visibility';
-            }
-        }
-
         // Lightweight interaction: Follow cursor glow
         document.addEventListener('mousemove', (e) => {
             const glows = document.querySelectorAll('.bg-glow');
@@ -229,25 +189,24 @@
                 glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
             });
         });
-    </script>
-
-
+</script>
 
 <script>
   function doLogin() {
     const emailEl = document.getElementById('emailInput');
-    const email = emailEl ? emailEl.value.toLowerCase() : '';
+    const passEl = document.getElementById('passInput');
+    
+    const email = emailEl ? emailEl.value.trim().toLowerCase() : '';
+    const password = passEl ? passEl.value.trim() : '';
 
-    if (email.includes('admin')) {
-      window.location.href = './admin/';
-    } else if (email.includes('tech')) {
-      window.location.href = './technician/';
-    } else if (email.includes('exec')) {
-      window.location.href = './executive/';
-    } else if (email.includes('inventory')) {
-      window.location.href = './inventory/';
-    } else {
+    const targetEmail = "bs20511@boripat.ac.th";
+    const targetPassword = "123456";
+
+    // ตรวจสอบอีเมลและรหัสผ่านแบบเจาะจง
+    if (email === targetEmail && password === targetPassword) {
       window.location.href = './reporter_portal/';
+    } else {
+      alert("อีเมลหรือรหัสผ่านไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง");
     }
   }
 </script>
