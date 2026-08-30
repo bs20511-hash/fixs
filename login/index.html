@@ -216,21 +216,42 @@
                 passInput.type = 'password';
                 icon.innerText = 'visibility';
             }
-function checkLogin() {
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value.trim();
+const API_URL = "https://script.google.com/macros/s/AKfycbzUUilqQLG44Dg8qqgkYqrnLqqvQD2EnrLF5_xHdASe3j75iWdNdNUcTE0jgV49apS11Q/exec";
 
-            const targetEmail = "Ihts2093@gmail.com";
-            const targetPassword = "123456767";
+async function checkLogin() {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
 
-            if (email === targetEmail && password === targetPassword) {
-                alert("เข้าสู่ระบบสำเร็จ!");
-                // ใส่พาธหน้าที่ต้องการให้เด้งไปเมื่อล็อกอินผ่าน
-                window.location.href = "../technician/index.html";
-            } else {
-                alert("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
-            }
-        }
+  if (!email || !password) {
+    alert("กรุณากรอกอีเมลและรหัสผ่านให้ครบถ้วน");
+    return;
+  }
+
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify({
+        action: 'login',
+        username: email,
+        password: password
+      })
+    })
+
+    const result = await response.json();
+    if (result.success) {
+      alert("เข้าสู่ระบบสำเร็จ!");
+      window.location.href = "../technician/index.html";
+    } else {
+      alert(result.message || "อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+    }
+  } catch (error) {
+    console.error("Login Error:", error);
+    alert("เกิดข้อผิดพลาดในการเชื่อมต่อกับระบบ");
+  }
+}
         // Lightweight interaction: Follow cursor glow
         document.addEventListener('mousemove', (e) => {
             const glows = document.querySelectorAll('.bg-glow');
