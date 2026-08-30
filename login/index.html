@@ -13,8 +13,8 @@
   <div class="bg-surface-container rounded-2xl p-6 shadow-xl border border-outline-variant/30">
     <h1 class="text-2xl font-bold text-center mb-6 text-on-surface">เข้าสู่ระบบ</h1>
 
-    <!-- Tab 1: Staff Login -->
-    <form onsubmit="checkLogin(); return false;" class="space-y-5 animate-in fade-in duration-300">
+    <!-- ล็อกอินฟอร์มแบบปิดล็อกการเข้าถึง -->
+    <form id="loginForm" class="space-y-5 animate-in fade-in duration-300">
       <div class="space-y-2">
         <label class="font-label-sm text-label-sm text-on-surface-variant ml-1">อีเมล</label>
         <div class="relative group">
@@ -54,47 +54,16 @@
 </main>
 
 <script>
-  function togglePassword() {
-    const passInput = document.getElementById('password');
-    const icon = document.getElementById('eyeIcon');
-    if (passInput.type === 'password') {
-      passInput.type = 'text';
-      icon.innerText = 'visibility_off';
-    } else {
-      passInput.type = 'password';
-      icon.innerText = 'visibility';
-    }
-  }
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    // ระงับการรีเฟรชหรือเปลี่ยนหน้าเว็บโดยสิ้นเชิง
+    e.preventDefault();
 
-  async function checkLogin() {
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value.trim();
-
-    const targetEmail = "bs20511@boripat.ac.th";
-    const targetPassword = "123456";
-
-    if (!email || !password) {
-      alert("กรุณากรอกอีเมลและรหัสผ่านให้ครบถ้วน");
-      return;
-    }
-
-    if (email === targetEmail && password === targetPassword) {
-      alert("เข้าสู่ระบบสำเร็จ!");
-      window.location.href = "../technician/index.html";
-    } else {
-      alert("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
-    }
-  }
-
-  // Lightweight interaction: Follow cursor glow
-  document.addEventListener('mousemove', (e) => {
-    const glows = document.querySelectorAll('.bg-glow');
-    const x = (e.clientX / window.innerWidth) * 20;
-    const y = (e.clientY / window.innerHeight) * 20;
-    glows.forEach((glow, idx) => {
-      const factor = idx === 0 ? 1 : -1;
-      glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-    });
+    // เด้งเตือนปฏิเสธการเข้าสู่ระบบเสมอ ไม่ว่าจะกรอกอะไรมาก็ตาม
+    alert("ไม่อนุญาตให้เข้าสู่ระบบ: ข้อมูลไม่ถูกต้อง หรือ บัญชีของคุณไม่มีสิทธิ์เข้าถึง");
+    
+    // คืนค่าว่างให้ช่องกรอกข้อมูล
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
   });
 </script>
 </body>
